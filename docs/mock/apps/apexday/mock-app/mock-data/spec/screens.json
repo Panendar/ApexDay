@@ -1,0 +1,5 @@
+[
+  { "code": "S01", "name": "Plan", "section": "9.5 item 3", "type": "page", "mode": "day/week/agenda", "buttons": ["Lock the day", "Quick-add", "Day", "Week", "Agenda"], "fields": ["title", "start time", "duration", "category", "load meter", "Inbox"] },
+  { "code": "S02", "name": "Today", "section": "9.5 item 2", "type": "page", "mode": "run the day", "buttons": ["Shift", "Complete", "Start (Focus Mode)", "Undo"], "fields": ["day ring", "Top 3", "Now card", "Up next", "day intention"] },
+  { "code": "S03", "name": "Shift dialog", "section": "9.5 item 7", "type": "dialog", "mode": "preview/apply/undo", "buttons": ["Cancel", "Apply", "Undo"], "fields": ["operation", "scope", "before/after", "counts"] }
+]

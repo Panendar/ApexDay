@@ -1,0 +1,78 @@
+{
+  "id": "plan-and-shift",
+  "title": "Plan the day, run it, shift it",
+  "startStep": "plan-day",
+  "completionMessage": "{users.student.name} planned the day, completed a task and absorbed a holiday in one reversible Shift. In the real flow the shift is stored as one batch, so Undo removes it and nothing is lost.",
+  "steps": {
+    "plan-day": {
+      "user": "student",
+      "screen": "S01",
+      "proposedAction": "Click Lock the day",
+      "infoPanel": [
+        { "key": "plan.dayLabel", "label": "Day" },
+        { "key": "plan.plannedHours", "label": "Planned hours" }
+      ],
+      "actions": {
+        "lock-day": { "performedText": "locked the day to commit to the plan", "nextStep": "today-now" }
+      }
+    },
+    "today-now": {
+      "user": "student",
+      "screen": "S02",
+      "proposedAction": "Click Complete on the Now card",
+      "infoPanel": [{ "key": "today.statsLine", "label": "Stats" }],
+      "actions": {
+        "complete-task": {
+          "performedText": "completed DSA graph practice",
+          "stateChange": { "today.dsaDone": { "set": 1 } },
+          "nextStep": "today-done"
+        }
+      }
+    },
+    "today-done": {
+      "user": "student",
+      "screen": "S02",
+      "proposedAction": "Click Shift",
+      "actions": {
+        "open-shift": { "performedText": "opened Shift", "nextStep": "shift-preview" }
+      }
+    },
+    "shift-preview": {
+      "user": "student",
+      "screen": "S03",
+      "proposedAction": "Review the preview and click Apply",
+      "infoPanel": [
+        { "key": "shift.moved", "label": "Tasks moved" },
+        { "key": "shift.fixed", "label": "Fixed items protected" }
+      ],
+      "actions": {
+        "apply-shift": {
+          "performedText": "applied the shift",
+          "stateChange": { "shift.applied": { "set": 1 } },
+          "nextStep": "shift-applied"
+        },
+        "cancel-shift": { "performedText": "cancelled the shift", "nextStep": "today-done" }
+      }
+    },
+    "shift-applied": {
+      "user": "student",
+      "screen": "S03",
+      "proposedAction": "Click Back to Today",
+      "actions": {
+        "back-today": { "performedText": "went back to Today", "nextStep": "today-final" },
+        "undo-shift": {
+          "performedText": "undid the shift",
+          "stateChange": { "shift.applied": { "set": 0 } },
+          "nextStep": "shift-preview"
+        }
+      }
+    },
+    "today-final": {
+      "user": "student",
+      "screen": "S02",
+      "proposedAction": "See the reshuffled day",
+      "performedText": "checked the reshuffled day",
+      "nextStep": null
+    }
+  }
+}

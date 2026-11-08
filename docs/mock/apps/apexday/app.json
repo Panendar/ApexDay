@@ -1,0 +1,14 @@
+{
+  "name": "apexday",
+  "title": "ApexDay",
+  "spec": "docs/project/context.md",
+  "walkthroughs": [
+    {
+      "id": "plan-and-shift",
+      "title": "Plan the day, run it, shift it",
+      "description": "Plan a day, complete a task on Today, then absorb a holiday with a previewed, undoable Shift.",
+      "sequenceFile": "sequences/plan-and-shift.json",
+      "seedData": "mock-app/mock-data/seeds/plan-and-shift.json"
+    }
+  ]
+}

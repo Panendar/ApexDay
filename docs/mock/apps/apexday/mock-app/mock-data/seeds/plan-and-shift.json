@@ -1,0 +1,42 @@
+{
+  "_sample": "Sample data only. Names, ids and numbers are invented.",
+  "plan": {
+    "dayLabel": "Mon 9 Nov",
+    "plannedHours": 6,
+    "limitHours": 14,
+    "inboxCount": 3,
+    "tasks": [
+      { "start": "09:00", "title": "DSA graph practice", "duration": "90m", "category": "Study", "top3": true, "fixed": false },
+      { "start": "11:00", "title": "Lab report", "duration": "60m", "category": "College", "top3": true, "fixed": false },
+      { "start": "14:00", "title": "Physics class", "duration": "50m", "category": "Class", "top3": false, "fixed": true },
+      { "start": "17:00", "title": "Revise notes", "duration": "45m", "category": "Study", "top3": true, "fixed": false }
+    ]
+  },
+  "today": {
+    "dayLabel": "Mon 9 Nov",
+    "dsaDone": 0,
+    "timeLeft": "23:10",
+    "ringStart": 0,
+    "ringDone": 25,
+    "intention": "Finish the DSA graph set",
+    "statsLine": "0 of 4 tasks done · 0 min focus",
+    "tasks": [
+      { "time": "09:00", "title": "DSA graph practice", "state": "Now" },
+      { "time": "11:00", "title": "Lab report", "state": "Planned" },
+      { "time": "14:00", "title": "Physics class", "state": "Fixed" },
+      { "time": "17:00", "title": "Revise notes", "state": "Planned" }
+    ]
+  },
+  "shift": {
+    "applied": 0,
+    "operation": "Mark holiday",
+    "dateLabel": "Tue 10 Nov",
+    "scope": "This week",
+    "before": "Tue 10 Nov: 6 tasks planned",
+    "after": "Tue 10 Nov is a holiday; its 6 tasks move to Wed 11 Nov",
+    "moved": 6,
+    "skipped": 0,
+    "overflow": 0,
+    "fixed": 1
+  }
+}

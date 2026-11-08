@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "apexday",
+      "title": "ApexDay",
+      "platform": "desktop"
+    }
+  ]
+}
