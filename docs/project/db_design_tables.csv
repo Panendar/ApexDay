@@ -1,0 +1,57 @@
+table,pk,important_fields,description,feedback,status
+users,id,"name, email, timezone",Account. Guest = no email until sign-in (REQ-235),,New
+user_settings,user_id,"density, streak_threshold_pct, nudge_delay_min, tone","One row of preferences per user (settings screen, REQ-253, REQ-232)",,New
+auth_identities,id,"user_id, provider, provider_subject","Sign-in identity (magic link email, Google)",,New
+login_tokens,id,"user_id, token_hash, expires_at","Single-use magic-link tokens, stored hashed",,New
+devices,id,"user_id, push_subscription_json, last_seen_at",Browser or device for push and sync,,New
+categories,id,"name, color, weekly_goal_min","Task category (Study, Class, Health, ...)",,New
+category_prefs,id,"category_id, last_timer_mode, nudges_enabled",Per-category switches and last-used timer mode,,New
+tags,id,"name, color",Free-form label,,New
+task_tags,"task_id, tag_id","task_id, tag_id",Join of tasks and tags,,New
+routines,id,"name, recurrence_rule, active_from, active_until","Repeating pattern that generates tasks (REQ-191, REQ-192)",,New
+routine_tasks,id,"routine_id, title, start_time, duration_min",Template task inside a routine,,New
+routine_pauses,id,"routine_id, from_date, to_date",Pause of a routine for a date range (F-028),,New
+tasks,id,"title, date, start_time, duration_min, status","One concrete task on one date. Trash = deleted_at set (REQ-184, REQ-250)","Open: added habit_id, timer_mode, reminder_lead_min, parent_task_id, moved_to_task_id, skip_reason (not in req table); confirm.",Feedback
+subtasks,id,"task_id, title, is_done, time_slice_min","Checklist step of a task (REQ-205, REQ-249)",,New
+task_links,id,"task_id, url",Link attached to a task,,New
+task_templates,id,"name, title, duration_min, reminder_lead_min",Reusable task template for quick-add (REQ-194),,New
+template_subtasks,id,"template_id, title",Subtask of a template,,New
+inbox_items,id,"text, promoted_task_id, archived_at",Unscheduled brain-dump item (REQ-189),,New
+day_plans,id,"date, day_type, is_locked, intention","Per-day state: type, lock, seal, intention, check-in (REQ-190, REQ-199, REQ-226)",Open: mood scale is not specified in the req; used integer 1-5.,Feedback
+shift_batches,id,"kind, scope, from_date, to_date, undone_at","One reversible bulk change (REQ-210 to REQ-215, REQ-251, REQ-252)",,New
+overrides,id,"date, routine_task_id, task_id, action, batch_id","One-off exception on top of a rule (skip, move, edit)",Open: added task_id (not in req) so shifts of manual tasks are also reversible; confirm.,Feedback
+timetables,id,"name, cycle_type, cycle_length","Class schedule and day-order cycle (REQ-216, REQ-241)",,New
+timetable_shares,id,"timetable_id, token_hash, revoked_at",Read-only share link of a timetable (REQ-246),,New
+timetable_alignments,id,"timetable_id, anchor_date, anchor_position",Day-order anchor; later dates advance one position per working day,,New
+class_slots,id,"timetable_id, cycle_position, subject, start_time, end_time",A class in the cycle,,New
+attendance,id,"class_slot_id, date, status",Attendance per class and date (REQ-217),,New
+calendar_entries,id,"date, kind, title, source","Holiday, exam or event that can trigger a Shift prompt (REQ-245)",,New
+holiday_calendars,id,"country, region, name",Reference: holiday calendar by country and state. Seeded by the team,,New
+holiday_dates,id,"holiday_calendar_id, date, title",Reference: dates of a holiday calendar,,New
+user_holiday_calendars,id,holiday_calendar_id,Holiday calendars a user follows,,New
+ics_feeds,id,"direction, url, token_hash, last_synced_at",ICS import feed or export feed of a user (REQ-245),,New
+focus_sessions,id,"task_id, started_at, ended_at, planned_min, actual_min, mode","Timer session; feeds time on task, progress and estimate accuracy (REQ-202 to REQ-204)",,New
+completions,id,"task_id, date, completed_at, on_time, xp, undone_at",Immutable completion history; only undone_at may change (REQ-197),,New
+start_nudges,id,"task_id, shown_at, tip_id, action_taken, reached_pct","Start nudge log for caps, muting and Rescued tasks (REQ-206, REQ-223)",,New
+tips,id,"text, context, tone",Reference: anti-procrastination tips (50+ seeded) (REQ-207),,New
+user_hidden_tips,id,tip_id,Tips a user hid,,New
+motivation_lines,id,"text, context, tone",Reference: 200+ motivation lines (REQ-231),,New
+habits,id,"name, cadence, target_count, unit, goal_id",Untimed recurring check-in (REQ-220),,New
+habit_logs,id,"habit_id, date, count, logged_at",Append-only habit check-ins; merged by union on sync,,New
+goals,id,"title, target_type, target_value, due_date, achieved_at",Long-term goal tasks and habits link to (REQ-221),,New
+streaks,id,"scope, scope_ref_id, current, best, freezes_left, last_counted_date",Derived cache of streaks; rebuildable from completions and habit_logs (REQ-219),,New
+streak_freezes,id,"streak_id, date, consented_at","Freeze used for a missed day, shown on calendar and heatmap",,New
+achievement_defs,code,"code, name, category",Reference: 40+ achievements (REQ-231),,New
+achievements,id,"code, unlocked_at",Achievement unlocked by a user,,New
+reflections,id,"period, period_start, text, rating","End-of-day, weekly and monthly review notes (REQ-200, REQ-224)",Open: rating scale is not specified in the req; used integer 1-5.,Feedback
+apex_states,id,"visual_theme, stage, daily_state",State of the growing Apex visual (REQ-230),,New
+xp_events,id,"date, source, source_id, xp, undone_at",XP ledger; total XP and level are derived (REQ-231),,New
+quest_defs,id,"code, text, xp",Reference: daily quest pool (REQ-247),,New
+user_quests,id,"date, quest_id, completed_at, xp_awarded",Quest shown to a user on a date; no failed state,,New
+seasonal_events,id,"code, name, start_date, end_date",Reference: time-limited look changes (REQ-248),,New
+weekly_plans,id,"week_start, step, goal_text, headline, completed_at",Weekly planning ritual result (REQ-225),,New
+conflict_log,id,"entity_table, entity_id, field, kept_value_json, discarded_value_json",Sync conflicts resolved last-writer-wins (REQ-185),Open: req does not specify the log format or where the user sees it; columns proposed.,Feedback
+history_log,id,"entity_table, entity_id, action, date, reason",Logged edits to sealed days (REQ-250),,New
+notification_log,id,"channel, kind, task_id, group_id, created_at","Sent notifications for the daily limit and grouping (REQ-237, REQ-238)",,New
+email_preferences,id,"kind, enabled, unsubscribe_token_hash",Email digest opt-ins (REQ-238),,New
+daily_totals,"user_id, date","date, planned_count, done_count, credit_sum, completion_pct, xp",Derived per-day aggregates for fast charts; rebuildable (NFR scale),,New
