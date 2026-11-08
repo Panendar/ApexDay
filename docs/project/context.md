@@ -7,3 +7,4 @@ Intent status: validated 2026-11-08 834b5d5a
 |---|---|---|---|
 | docs/project/requirements.md | requirements.md | draft | user |
 | docs/project/intent.md | Project intent | final | define-intent |
+| docs/requirements/ | Requirement documents of the imported features | draft | import-features |
