@@ -2,7 +2,7 @@
   "entity_type": "requirement",
   "entity_id": "REQ-184",
   "assigned_to": "38oTmGkUyHdmvQO1EiCDUlgGcm23",
-  "status": "pending",
+  "status": "completed",
   "questions": [
     {
       "id": "q1",
@@ -10,9 +10,10 @@
       "text": "Which application is the primary one for this work? No applications are registered in the project yet. Please name it (for example the offline-first web app) and register it in KNM.",
       "reason": "GET /apps returned an empty list; a work item needs a primary application and the context does not point to one.",
       "required": true,
-      "answer": null,
-      "answered_by": null,
-      "answered_at": null
+      "answer": "offline-first web app",
+      "answered_by": "38oTmGkUyHdmvQO1EiCDUlgGcm23",
+      "answered_at": "2026-11-09T07:20:38.000Z",
+      "other": null
     },
     {
       "id": "q2",
@@ -20,9 +21,10 @@
       "text": "Which framework, animation library and local database should the web app use for offline storage of tasks (the requirement says the team chooses and records it in the README)?",
       "reason": "Open question in req.md; the implementation approach and affected files depend on it.",
       "required": true,
-      "answer": null,
-      "answered_by": null,
-      "answered_at": null
+      "answer": "React, Framer Motion, Sqlite",
+      "answered_by": "38oTmGkUyHdmvQO1EiCDUlgGcm23",
+      "answered_at": "2026-11-09T07:20:38.000Z",
+      "other": null
     },
     {
       "id": "q3",
@@ -30,9 +32,10 @@
       "text": "Is this a single client-only application (no separate API/backend), given that tasks are stored locally and must work offline?",
       "reason": "Decides whether other applications are listed besides the primary one.",
       "required": true,
-      "answer": null,
-      "answered_by": null,
-      "answered_at": null
+      "answer": "Yes",
+      "answered_by": "38oTmGkUyHdmvQO1EiCDUlgGcm23",
+      "answered_at": "2026-11-09T07:20:38.000Z",
+      "other": null
     }
   ]
 }
