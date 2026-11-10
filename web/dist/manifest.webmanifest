@@ -1,0 +1,10 @@
+{
+  "name": "ApexDay",
+  "short_name": "ApexDay",
+  "description": "Plan it. Run it. Shift it.",
+  "start_url": "/app",
+  "display": "standalone",
+  "background_color": "#0b0b0c",
+  "theme_color": "#0b0b0c",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

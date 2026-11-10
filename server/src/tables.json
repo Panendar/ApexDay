@@ -1,0 +1,1690 @@
+[
+ {
+  "name": "users",
+  "cols": [
+   "id",
+   "name",
+   "email",
+   "timezone",
+   "week_start",
+   "day_start_hour",
+   "theme",
+   "deletion_requested_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "user_settings",
+  "cols": [
+   "user_id",
+   "density",
+   "time_format",
+   "locale",
+   "plan_prompt_time",
+   "close_day_time",
+   "planning_day",
+   "planning_time",
+   "snap_grid_min",
+   "overload_limit_min",
+   "streak_threshold_pct",
+   "streak_freezes_per_month",
+   "partial_tier1_pct",
+   "partial_tier2_pct",
+   "partial_credit1",
+   "partial_credit2",
+   "xp_daily_cap",
+   "minimal_mode",
+   "reduced_motion",
+   "sound_enabled",
+   "tone",
+   "tips_enabled",
+   "nudges_enabled",
+   "nudge_delay_min",
+   "nudge_daily_cap",
+   "quiet_hours_start",
+   "quiet_hours_end",
+   "notif_daily_max",
+   "notif_lead_min",
+   "in_tab_alerts",
+   "focus_work_min",
+   "focus_break_min",
+   "focus_long_break_min",
+   "tiny_work_min",
+   "tiny_break_min",
+   "ambient_sound",
+   "quests_enabled",
+   "seasonal_events_enabled",
+   "analytics_opt_in",
+   "analytics_opt_in_at",
+   "onboarding_goal",
+   "onboarding_done_at",
+   "tour_done_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "user_id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "auth_identities",
+  "cols": [
+   "id",
+   "user_id",
+   "provider",
+   "provider_subject",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "login_tokens",
+  "cols": [
+   "id",
+   "user_id",
+   "token_hash",
+   "expires_at",
+   "used_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "devices",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "push_subscription_json",
+   "last_seen_at",
+   "last_sync_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "categories",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "color",
+   "icon",
+   "weekly_goal_min",
+   "sort_order",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "category_prefs",
+  "cols": [
+   "id",
+   "category_id",
+   "last_timer_mode",
+   "nudges_enabled",
+   "notify_enabled",
+   "lead_min",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "category_id",
+    "ref": "categories"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "tags",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "color",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "task_tags",
+  "cols": [
+   "task_id",
+   "tag_id",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "task_id",
+   "tag_id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   },
+   {
+    "col": "tag_id",
+    "ref": "tags"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "routines",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "color",
+   "icon",
+   "category_id",
+   "timetable_id",
+   "recurrence_rule",
+   "active_from",
+   "active_until",
+   "archived_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "category_id",
+    "ref": "categories"
+   },
+   {
+    "col": "timetable_id",
+    "ref": "timetables"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "routine_tasks",
+  "cols": [
+   "id",
+   "routine_id",
+   "title",
+   "start_time",
+   "duration_min",
+   "sort_order",
+   "around_classes",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "routine_id",
+    "ref": "routines"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "routine_pauses",
+  "cols": [
+   "id",
+   "routine_id",
+   "from_date",
+   "to_date",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "routine_id",
+    "ref": "routines"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "tasks",
+  "cols": [
+   "id",
+   "user_id",
+   "title",
+   "notes",
+   "category_id",
+   "priority",
+   "energy",
+   "date",
+   "start_time",
+   "duration_min",
+   "is_fixed",
+   "is_top3",
+   "goal_id",
+   "habit_id",
+   "source",
+   "routine_task_id",
+   "status",
+   "skip_reason",
+   "timer_mode",
+   "reminder_lead_min",
+   "parent_task_id",
+   "moved_to_task_id",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "category_id",
+    "ref": "categories"
+   },
+   {
+    "col": "goal_id",
+    "ref": "goals"
+   },
+   {
+    "col": "habit_id",
+    "ref": "habits"
+   },
+   {
+    "col": "routine_task_id",
+    "ref": "routine_tasks"
+   },
+   {
+    "col": "parent_task_id",
+    "ref": "tasks"
+   },
+   {
+    "col": "moved_to_task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "subtasks",
+  "cols": [
+   "id",
+   "task_id",
+   "title",
+   "sort_order",
+   "time_slice_min",
+   "is_done",
+   "done_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "task_links",
+  "cols": [
+   "id",
+   "task_id",
+   "url",
+   "label",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "task_templates",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "title",
+   "notes",
+   "category_id",
+   "priority",
+   "energy",
+   "duration_min",
+   "reminder_lead_min",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "category_id",
+    "ref": "categories"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "template_subtasks",
+  "cols": [
+   "id",
+   "template_id",
+   "title",
+   "sort_order",
+   "time_slice_min",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "template_id",
+    "ref": "task_templates"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "inbox_items",
+  "cols": [
+   "id",
+   "user_id",
+   "text",
+   "promoted_task_id",
+   "archived_at",
+   "note",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "promoted_task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "day_plans",
+  "cols": [
+   "id",
+   "user_id",
+   "date",
+   "day_type",
+   "day_order_index",
+   "timetable_id",
+   "is_locked",
+   "locked_at",
+   "sealed_at",
+   "intention",
+   "mood",
+   "energy_morning",
+   "note",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "timetable_id",
+    "ref": "timetables"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "shift_batches",
+  "cols": [
+   "id",
+   "user_id",
+   "kind",
+   "scope",
+   "from_date",
+   "to_date",
+   "snapshot_json",
+   "moved_count",
+   "skipped_count",
+   "overflow_count",
+   "fixed_protected_count",
+   "undone_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "overrides",
+  "cols": [
+   "id",
+   "user_id",
+   "date",
+   "routine_task_id",
+   "task_id",
+   "action",
+   "payload_json",
+   "reason",
+   "batch_id",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "routine_task_id",
+    "ref": "routine_tasks"
+   },
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   },
+   {
+    "col": "batch_id",
+    "ref": "shift_batches"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "timetables",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "cycle_type",
+   "cycle_length",
+   "attendance_limit_pct",
+   "version",
+   "source_share_id",
+   "source_version",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "source_share_id",
+    "ref": "timetable_shares"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "timetable_shares",
+  "cols": [
+   "id",
+   "user_id",
+   "timetable_id",
+   "token_hash",
+   "revoked_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "timetable_id",
+    "ref": "timetables"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "timetable_alignments",
+  "cols": [
+   "id",
+   "timetable_id",
+   "anchor_date",
+   "anchor_position",
+   "batch_id",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "timetable_id",
+    "ref": "timetables"
+   },
+   {
+    "col": "batch_id",
+    "ref": "shift_batches"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "class_slots",
+  "cols": [
+   "id",
+   "timetable_id",
+   "cycle_position",
+   "subject",
+   "start_time",
+   "end_time",
+   "room",
+   "teacher",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": true,
+  "fks": [
+   {
+    "col": "timetable_id",
+    "ref": "timetables"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "attendance",
+  "cols": [
+   "id",
+   "user_id",
+   "class_slot_id",
+   "date",
+   "status",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "class_slot_id",
+    "ref": "class_slots"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "calendar_entries",
+  "cols": [
+   "id",
+   "user_id",
+   "date",
+   "kind",
+   "title",
+   "source",
+   "holiday_date_id",
+   "shift_prompted_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "holiday_date_id",
+    "ref": "holiday_dates"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "holiday_calendars",
+  "cols": [
+   "id",
+   "country",
+   "region",
+   "name",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "holiday_dates",
+  "cols": [
+   "id",
+   "holiday_calendar_id",
+   "date",
+   "title",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [
+   {
+    "col": "holiday_calendar_id",
+    "ref": "holiday_calendars"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "user_holiday_calendars",
+  "cols": [
+   "id",
+   "user_id",
+   "holiday_calendar_id",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "holiday_calendar_id",
+    "ref": "holiday_calendars"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "ics_feeds",
+  "cols": [
+   "id",
+   "user_id",
+   "direction",
+   "url",
+   "token_hash",
+   "last_synced_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "focus_sessions",
+  "cols": [
+   "id",
+   "user_id",
+   "task_id",
+   "started_at",
+   "ended_at",
+   "planned_min",
+   "actual_min",
+   "mode",
+   "work_min",
+   "break_min",
+   "round_no",
+   "interruptions",
+   "last_heartbeat_at",
+   "duration_confirmed",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "completions",
+  "cols": [
+   "id",
+   "user_id",
+   "task_id",
+   "date",
+   "completed_at",
+   "actual_min",
+   "on_time",
+   "xp",
+   "undone_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "start_nudges",
+  "cols": [
+   "id",
+   "user_id",
+   "task_id",
+   "shown_at",
+   "tip_id",
+   "action_taken",
+   "reached_pct",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   },
+   {
+    "col": "tip_id",
+    "ref": "tips"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "tips",
+  "cols": [
+   "id",
+   "text",
+   "context",
+   "tone",
+   "is_active",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "user_hidden_tips",
+  "cols": [
+   "id",
+   "user_id",
+   "tip_id",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "tip_id",
+    "ref": "tips"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "motivation_lines",
+  "cols": [
+   "id",
+   "text",
+   "context",
+   "tone",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "habits",
+  "cols": [
+   "id",
+   "user_id",
+   "name",
+   "icon",
+   "color",
+   "cadence",
+   "times_per_week",
+   "target_count",
+   "unit",
+   "goal_id",
+   "paused_until",
+   "archived_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "goal_id",
+    "ref": "goals"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "habit_logs",
+  "cols": [
+   "id",
+   "user_id",
+   "habit_id",
+   "date",
+   "count",
+   "logged_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "habit_id",
+    "ref": "habits"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "goals",
+  "cols": [
+   "id",
+   "user_id",
+   "title",
+   "category_id",
+   "target_type",
+   "target_value",
+   "due_date",
+   "achieved_at",
+   "archived_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json",
+   "deleted_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "category_id",
+    "ref": "categories"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": true
+ },
+ {
+  "name": "streaks",
+  "cols": [
+   "id",
+   "user_id",
+   "scope",
+   "scope_ref_id",
+   "current",
+   "best",
+   "freezes_left",
+   "last_counted_date",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "streak_freezes",
+  "cols": [
+   "id",
+   "user_id",
+   "streak_id",
+   "date",
+   "consented_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "streak_id",
+    "ref": "streaks"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "achievement_defs",
+  "cols": [
+   "code",
+   "name",
+   "description",
+   "category",
+   "created_at"
+  ],
+  "pk": [
+   "code"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "achievements",
+  "cols": [
+   "id",
+   "user_id",
+   "code",
+   "unlocked_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "code",
+    "ref": "achievement_defs"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "reflections",
+  "cols": [
+   "id",
+   "user_id",
+   "period",
+   "period_start",
+   "text",
+   "rating",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "apex_states",
+  "cols": [
+   "id",
+   "user_id",
+   "visual_theme",
+   "stage",
+   "daily_state",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "xp_events",
+  "cols": [
+   "id",
+   "user_id",
+   "date",
+   "source",
+   "source_id",
+   "xp",
+   "undone_at",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "quest_defs",
+  "cols": [
+   "id",
+   "code",
+   "text",
+   "xp",
+   "is_active",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "user_quests",
+  "cols": [
+   "id",
+   "user_id",
+   "date",
+   "quest_id",
+   "completed_at",
+   "xp_awarded",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "quest_id",
+    "ref": "quest_defs"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "seasonal_events",
+  "cols": [
+   "id",
+   "code",
+   "name",
+   "start_date",
+   "end_date",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": false,
+  "editable": false,
+  "fks": [],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "weekly_plans",
+  "cols": [
+   "id",
+   "user_id",
+   "week_start",
+   "step",
+   "goal_text",
+   "headline",
+   "completed_at",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "conflict_log",
+  "cols": [
+   "id",
+   "user_id",
+   "entity_table",
+   "entity_id",
+   "field",
+   "kept_value_json",
+   "discarded_value_json",
+   "kept_device_id",
+   "discarded_device_id",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "kept_device_id",
+    "ref": "devices"
+   },
+   {
+    "col": "discarded_device_id",
+    "ref": "devices"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "history_log",
+  "cols": [
+   "id",
+   "user_id",
+   "entity_table",
+   "entity_id",
+   "date",
+   "action",
+   "before_json",
+   "after_json",
+   "reason",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "notification_log",
+  "cols": [
+   "id",
+   "user_id",
+   "channel",
+   "kind",
+   "task_id",
+   "group_id",
+   "created_at"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": false,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   },
+   {
+    "col": "task_id",
+    "ref": "tasks"
+   }
+  ],
+  "appendOnly": true,
+  "softDelete": false
+ },
+ {
+  "name": "email_preferences",
+  "cols": [
+   "id",
+   "user_id",
+   "kind",
+   "enabled",
+   "unsubscribe_token_hash",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "id"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ },
+ {
+  "name": "daily_totals",
+  "cols": [
+   "user_id",
+   "date",
+   "planned_count",
+   "done_count",
+   "credit_sum",
+   "completion_pct",
+   "planned_min",
+   "focus_min",
+   "top3_planned",
+   "top3_done",
+   "xp",
+   "streak_counted",
+   "created_at",
+   "updated_at",
+   "field_versions_json"
+  ],
+  "pk": [
+   "user_id",
+   "date"
+  ],
+  "userOwned": true,
+  "editable": true,
+  "fks": [
+   {
+    "col": "user_id",
+    "ref": "users"
+   }
+  ],
+  "appendOnly": false,
+  "softDelete": false
+ }
+]

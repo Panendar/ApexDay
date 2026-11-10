@@ -1,0 +1,254 @@
+[
+ {
+  "code": "first_step",
+  "name": "First Step",
+  "description": "Complete your first task",
+  "category": "consistency"
+ },
+ {
+  "code": "ten_down",
+  "name": "Ten Down",
+  "description": "Complete 10 tasks",
+  "category": "consistency"
+ },
+ {
+  "code": "fifty_club",
+  "name": "Fifty Club",
+  "description": "Complete 50 tasks",
+  "category": "consistency"
+ },
+ {
+  "code": "century",
+  "name": "Century",
+  "description": "Complete 100 tasks",
+  "category": "consistency"
+ },
+ {
+  "code": "five_hundred",
+  "name": "Five Hundred",
+  "description": "Complete 500 tasks",
+  "category": "consistency"
+ },
+ {
+  "code": "streak_3",
+  "name": "Warm Up",
+  "description": "A 3-day streak",
+  "category": "consistency"
+ },
+ {
+  "code": "streak_7",
+  "name": "One Week Strong",
+  "description": "A 7-day streak",
+  "category": "consistency"
+ },
+ {
+  "code": "streak_14",
+  "name": "Fortnight",
+  "description": "A 14-day streak",
+  "category": "consistency"
+ },
+ {
+  "code": "streak_30",
+  "name": "Monthly Habit",
+  "description": "A 30-day streak",
+  "category": "consistency"
+ },
+ {
+  "code": "streak_100",
+  "name": "Hundred Days",
+  "description": "A 100-day streak",
+  "category": "consistency"
+ },
+ {
+  "code": "best_21",
+  "name": "Personal Best",
+  "description": "Reach a best streak of 21",
+  "category": "consistency"
+ },
+ {
+  "code": "perfect_1",
+  "name": "Perfect Day",
+  "description": "Finish every task in a day",
+  "category": "timing"
+ },
+ {
+  "code": "perfect_5",
+  "name": "Perfect Five",
+  "description": "Five perfect days",
+  "category": "timing"
+ },
+ {
+  "code": "perfect_20",
+  "name": "Flawless",
+  "description": "Twenty perfect days",
+  "category": "timing"
+ },
+ {
+  "code": "early_bird",
+  "name": "Early Bird",
+  "description": "Finish a task before 9 a.m. ten times",
+  "category": "timing"
+ },
+ {
+  "code": "top3_1",
+  "name": "Top Three",
+  "description": "Clear a full Top 3",
+  "category": "timing"
+ },
+ {
+  "code": "top3_10",
+  "name": "Priority Pro",
+  "description": "Clear Top 3 ten times",
+  "category": "timing"
+ },
+ {
+  "code": "plan_5",
+  "name": "Planner",
+  "description": "Plan tomorrow five evenings",
+  "category": "timing"
+ },
+ {
+  "code": "comeback_1",
+  "name": "Comeback Start",
+  "description": "Start a task after a missed day",
+  "category": "comeback"
+ },
+ {
+  "code": "comeback_5",
+  "name": "Bounce Back",
+  "description": "Five comebacks",
+  "category": "comeback"
+ },
+ {
+  "code": "first_starter",
+  "name": "First Starter",
+  "description": "Use a Tiny Start sprint",
+  "category": "focus"
+ },
+ {
+  "code": "five_sprints",
+  "name": "Five Sprints",
+  "description": "Complete five sprints",
+  "category": "focus"
+ },
+ {
+  "code": "sprint_25",
+  "name": "Sprint Master",
+  "description": "Complete 25 sprints",
+  "category": "focus"
+ },
+ {
+  "code": "rescued_1",
+  "name": "Rescued One",
+  "description": "Rescue a nudged task past 20%",
+  "category": "focus"
+ },
+ {
+  "code": "rescued_10",
+  "name": "Rescued Ten",
+  "description": "Rescue ten nudged tasks",
+  "category": "focus"
+ },
+ {
+  "code": "focus_1",
+  "name": "First Hour",
+  "description": "One hour of focus time",
+  "category": "focus"
+ },
+ {
+  "code": "focus_10",
+  "name": "Deep Diver",
+  "description": "Ten hours of focus time",
+  "category": "focus"
+ },
+ {
+  "code": "focus_50",
+  "name": "Flow State",
+  "description": "Fifty hours of focus time",
+  "category": "focus"
+ },
+ {
+  "code": "focus_100",
+  "name": "Hundred Hours",
+  "description": "One hundred hours of focus time",
+  "category": "focus"
+ },
+ {
+  "code": "shift_1",
+  "name": "Rolled With It",
+  "description": "Apply your first Shift",
+  "category": "shifting"
+ },
+ {
+  "code": "shift_5",
+  "name": "Flexible",
+  "description": "Apply five Shifts",
+  "category": "shifting"
+ },
+ {
+  "code": "shift_20",
+  "name": "Shape Shifter",
+  "description": "Apply twenty Shifts",
+  "category": "shifting"
+ },
+ {
+  "code": "habit_7",
+  "name": "Habit Seed",
+  "description": "Log habits on 7 days",
+  "category": "habits"
+ },
+ {
+  "code": "habit_30",
+  "name": "Habit Tree",
+  "description": "Log habits on 30 days",
+  "category": "habits"
+ },
+ {
+  "code": "habit_100",
+  "name": "Habit Forest",
+  "description": "Log habits on 100 days",
+  "category": "habits"
+ },
+ {
+  "code": "goal_1",
+  "name": "Goal Getter",
+  "description": "Achieve a goal",
+  "category": "goals"
+ },
+ {
+  "code": "goal_5",
+  "name": "Dream Chaser",
+  "description": "Achieve five goals",
+  "category": "goals"
+ },
+ {
+  "code": "class_10",
+  "name": "Front Row",
+  "description": "Attend 10 classes",
+  "category": "attendance"
+ },
+ {
+  "code": "class_50",
+  "name": "Never Absent",
+  "description": "Attend 50 classes",
+  "category": "attendance"
+ },
+ {
+  "code": "level_5",
+  "name": "Level 5",
+  "description": "Reach level 5",
+  "category": "mastery"
+ },
+ {
+  "code": "level_10",
+  "name": "Level 10",
+  "description": "Reach level 10",
+  "category": "mastery"
+ },
+ {
+  "code": "level_20",
+  "name": "Level 20",
+  "description": "Reach level 20",
+  "category": "mastery"
+ }
+]

@@ -2,3 +2,5 @@
 .knm/
 .project-knm
 .claude/
+node_modules
+node_modules
